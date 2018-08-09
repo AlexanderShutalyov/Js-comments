@@ -71,11 +71,20 @@ var comments = [
 ]
 
 function getCurrentPostComments ( postId ) {
-        
-        for (i=0; i< posts.length; i++) {
+var res = []  
+        for (i=0; i< comments.length; i++) {
+
                 if (comments[i].postId == postId) {
-                var res = [comments[i].text]
+                res.text =  [comments[i].text]
+        
+                        for (j=0; j < users.length; j++) {
+                                if (users[j].userId == comments[i].author) {
+                                res.author  = [users[j].name]   
+                                }
+                        }
                 }
+
+
         }
         return res
 }
